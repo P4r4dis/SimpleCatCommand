@@ -1,9 +1,30 @@
 # SimpleCatCommand
+
+[![forthebadge](https://forthebadge.com/images/badges/made-with-c-plus-plus.svg)](https://forthebadge.com)
+[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
+
+# Description
+
+* Cat(concatenate) command is very frequently used in Linux. It reads data from the file and gives their content as output. It helps us to create, view, concatenate files.
+
+# Objectifs
+
+* Write a simplified cat(1) command.
+* Executable must take one or several files as parameters, and does not need to handle the special case
+of the standard input.
+* Upon error (file not found, permission denied, etc.), you must write the following message to the error
+output:
+<br>`my_cat : file : No such file or directory`<br>
+* file` must be replaced with the name of the file for which the error was encountered.
+* If no parameter is passed to your program, you must write the following message to the error output:
+<br>`my_cat : Usage : ./ my_cat file [...]`<br>
+
+
 # Check gitFlow
 
-<h1 align="center">
+<!-- <h1 align="center">
   <br>
-  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/app/img/markdownify.png" alt="Markdownify" width="200"></a>
+  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" alt="Markdownify" width="200"></a>
   <br>
   Markdownify
   <br>
@@ -23,7 +44,7 @@
   <a href="https://www.paypal.me/AmitMerchant">
     <img src="https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&amp;style=flat">
   </a>
-</p>
+</p> -->
 
 <p align="center">
   <a href="#key-features">Key Features</a> •
@@ -34,12 +55,12 @@
   <a href="#license">License</a>
 </p>
 
-![screenshot](https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/app/img/markdownify.gif)
+<!-- ![screenshot](https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/app/img/markdownify.gif)
 
 ## Key Features
 
 * LivePreview - Make changes, See changes
-  - Instantly see what your Markdown documents look like in HTML as you create them.
+  - Instantly see what your Markdown documents look like in HTML as you create them. -->
 
 # Usage
 
