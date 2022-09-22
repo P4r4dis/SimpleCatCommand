@@ -1,5 +1,10 @@
 #include <criterion/criterion.h>
+#include <unistd.h>
 
-Test(simple, test) {
+void	my_putchar(char c) {
+	write(1, &c, 1);
+}
+
+Test (simple, test) {
 	cr_assert(10, "HelloWorld");
 }
