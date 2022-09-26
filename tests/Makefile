@@ -6,7 +6,7 @@ INCS_PATH	=	./include_test/
 NAME		=	test_my_cat
 
 INCFLAGS	+=	-I./include_test/#$(INCS_PATH)
-CRITFLAGS	+=	--coverage -lcriterion
+CRITFLAGS	+=	--coverage -lcriterion --verbose
 CPPFLAGS	+=	-Wall -Wextra -Werror $(INCFLAGS) $(CRITFLAGS)
 
 
