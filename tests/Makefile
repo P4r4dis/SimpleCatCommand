@@ -10,7 +10,7 @@ CRITFLAGS	+=	--coverage -lcriterion --verbose
 CPPFLAGS	+=	-Wall -Wextra -Werror $(INCFLAGS) $(CRITFLAGS)
 
 
-SRCS		=	test3.cpp \
+SRCS		=	test_my_cat.cpp \
 				$(SRCS_PATH)/src_test.cpp
 
 OBJS		=	$(SRCS:.cpp=.o)

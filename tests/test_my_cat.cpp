@@ -6,42 +6,6 @@ Tests(functionName, comment[, options])
     [CODE]
 }*/
 
-// Test (string, default_value)
-// {
-// 	std::string s;
-// 	cr_assert_eq (s, "");
-// }
-
-// Test (string, assign)
-// {
-// 	std::string s;
-
-// 	s = "test";
-// 	cr_assert_eq (s,"test");
-// }
-
-// Test (string, append)
-// {
-// 	std::string s("test");
-
-// 	s += "ing";
-// 	cr_assert_eq (s ,"testing");
-// }
-
-// Test(errors, exit_code, .init=redirect_all_stdout)
-// {
-// 	error();
-// 	cr_assert_stderr_eq_str("error");
-// }
-
-// void setup(void) {
-//     puts("Runs before the test");
-// }
-
-// void teardown(void) {
-//     puts("Runs after the test");
-// }
-
 Test (check_params, result_with_null_param, .init=redirect_all_stdout)
 {
 	unsigned int ac0 = 0; // just binary without parameters as arguments
