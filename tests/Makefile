@@ -1,7 +1,8 @@
 G++			=	g++
 
-SRCS_PATH	=	./src_test
-INCS_PATH	=	./include_test/
+SRC_PATH		=	../sources/
+SRC_TEST_PATH	=	./src_test/
+INC_TEST_PATH	=	./include_test/
 
 NAME		=	test_my_cat
 
@@ -11,7 +12,9 @@ CPPFLAGS	+=	-Wall -Wextra -Werror $(INCFLAGS) $(CRITFLAGS)
 
 
 SRCS		=	test_my_cat.cpp \
-				$(SRCS_PATH)/src_test.cpp
+				$(SRC_PATH)/my_cat.cpp \
+				$(SRC_TEST_PATH)/src_test.cpp
+
 
 OBJS		=	$(SRCS:.cpp=.o)
 OBJS_GCDA	=	$(SRCS:.cpp=.gcda)
@@ -27,7 +30,7 @@ RM			=	rm -rf
 
 clean		:
 				$(RM) $(OBJS) $(OBJS_GCDA) $(OBJS_GCNO)
-				$(RM) $(SRCS_PATH)$(OBJS) $(SRCS_PATH)$(OBJS_GCDA) $(SRCS_PATH)$(OBJS_GCNO)
+				$(RM) $(SRC_TEST_PATH)$(OBJS) $(SRC_TEST_PATH)$(OBJS_GCDA) $(SRC_TEST_PATH)$(OBJS_GCNO)
 
 fclean		:	clean
 				$(RM) $(NAME)

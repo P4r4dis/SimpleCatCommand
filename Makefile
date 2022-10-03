@@ -1,5 +1,6 @@
 G++			=	g++
 
+CORE_PATH	=	./core
 SRCS_PATH	=	./sources
 TST_PATH	=	./tests
 INCS_PATH	=	./includes
@@ -15,7 +16,7 @@ CPPFLAGS	+=	-Wall -Wextra -Werror $(INCFLAGS)#-W -std=c++1z
 
 
 SRCS		=	$(SRCS_PATH)/my_cat.cpp \
-				$(SRCS_PATH)/main.cpp
+				$(CORE_PATH)/main.cpp
 
 SRC_TEST	=	tests/$(NAME)_test.cpp
 

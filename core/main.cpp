@@ -2,8 +2,8 @@
 
 int main(int ac, char **av)
 {
-    if (!ac)
+    check_nb_params(ac);
+    if(av)
         return 0;
-    my_putchar(av[1][0]);
     return 0;
 }

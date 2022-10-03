@@ -8,9 +8,9 @@
 #include <iostream>
 #include <ostream>
 
-void    redirect_all_stdout(void);
-int     error(void);
-int     check_params(unsigned int ac);
+void                redirect_all_stdout(void);
+// int                 error(void);
+unsigned int        check_nb_params(unsigned int ac);
 
 
 

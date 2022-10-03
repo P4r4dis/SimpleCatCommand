@@ -22,15 +22,15 @@ void    redirect_all_stdout(void)
 
 
 // check_params
-int     check_params(unsigned int ac)
-{
-        if (ac < 2)
-        {
-                std::cerr << "my_cat : Usage : ./my_cat file [...]";
-                return EXIT_FAILURE;
-        }
-        return EXIT_SUCCESS;
-}
+// int     check_params(unsigned int ac)
+// {
+//         if (ac < 2)
+//         {
+//                 std::cerr << "my_cat : Usage : ./my_cat file [...]";
+//                 return EXIT_FAILURE;
+//         }
+//         return EXIT_SUCCESS;
+// }
 
 
 
