@@ -6,8 +6,8 @@ Test (check_nb_params, result_with_null_param, .init=redirect_all_stdout)
 	unsigned int result = check_nb_params(ac0); 
 
 	cr_assert(ac0 < 2, "The ac result is %d, EXPECTED ac < 2", ac0);
-	cr_assert_stderr_eq_str("my_cat : Usage : ./my_cat file [...]",
-	"STDERR don't matches. EXPECTED : my_cat : Usage : ./my_cat file [...]");
+	cr_assert_stderr_eq_str("my_cat : Usage : ./my_cat file [...]\n",
+	"STDERR don't matches. EXPECTED : my_cat : Usage : ./my_cat file [...]\n");
 	cr_assert(result == 1, "The result is %d, EXPECTED EXIT_FAILURE or %d", result, EXIT_FAILURE);
 }
 
@@ -17,8 +17,8 @@ Test (check_nb_params, result_with_one_param, .init=redirect_all_stdout)
 	unsigned int result = check_nb_params(ac1);
 
 	cr_assert(ac1 < 2, "The ac result is %d, EXPECTED ac < 2", ac1);
-	cr_assert_stderr_eq_str("my_cat : Usage : ./my_cat file [...]",
-	"STDERR don't matches. EXPECTED : my_cat : Usage : ./my_cat file [...]");
+	cr_assert_stderr_eq_str("my_cat : Usage : ./my_cat file [...]\n",
+	"STDERR don't matches. EXPECTED : my_cat : Usage : ./my_cat file [...]\n");
 	cr_assert(result == 1, "The result is %d, EXPECTED EXIT_FAILURE or %d", result, EXIT_FAILURE);
 }
 
