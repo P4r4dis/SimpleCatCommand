@@ -6,11 +6,7 @@ void            redirect_all_stdout(void)
         cr_redirect_stderr();
 }
 
-// unsigned int    error_handle(char *str)
-// {
-//         std::cerr << "my_cat : " << str << " : No such file or directory" << std::endl;
-//         return EXIT_SUCCESS;
-// }
+
 // int     error(void)
 // {
 //         write(2, "error", 5); // stdoout = 1 and stderr = 2
@@ -25,7 +21,7 @@ void            redirect_all_stdout(void)
 //     puts("Runs after the test");
 // }
 
-
+///////////////////////////////////////////////////////////////////////////////////////////
 // check_params
 // int     check_params(unsigned int ac)
 // {
@@ -37,7 +33,11 @@ void            redirect_all_stdout(void)
 //         return EXIT_SUCCESS;
 // }
 
-
+// unsigned int    error_handle(char *str)
+// {
+//         std::cerr << "my_cat : " << str << " : No such file or directory" << std::endl;
+//         return EXIT_SUCCESS;
+// }
 
 // int main(int ac, char **av)
 // {
