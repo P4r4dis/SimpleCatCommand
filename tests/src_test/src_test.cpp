@@ -1,11 +1,16 @@
 #include "../include_test/test.hpp"
 
-void    redirect_all_stdout(void)
+void            redirect_all_stdout(void)
 {
         cr_redirect_stdout();
         cr_redirect_stderr();
 }
 
+// unsigned int    error_handle(char *str)
+// {
+//         std::cerr << "my_cat : " << str << " : No such file or directory" << std::endl;
+//         return EXIT_SUCCESS;
+// }
 // int     error(void)
 // {
 //         write(2, "error", 5); // stdoout = 1 and stderr = 2
@@ -47,6 +52,9 @@ void    redirect_all_stdout(void)
 //         printf("STDERR RESULT AFTER FFLUSH AND CLOSE: %s", stderr);
 
 //         check_if_no_params(ac);
+
+//         char file[] = "File.txt";
+//         error_handle(file);
 //         if(!av)
 //                 return 1;
 //         return EXIT_SUCCESS;

@@ -10,7 +10,9 @@
 
 void                redirect_all_stdout(void);
 // int                 error(void);
-unsigned int        check_nb_params(unsigned int ac);
+// unsigned int        check_nb_params(unsigned int ac);
+// unsigned int        error_handle(char *str);
+
 
 
 
