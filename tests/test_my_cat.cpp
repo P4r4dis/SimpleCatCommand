@@ -1,4 +1,5 @@
 #include "./include_test/test.hpp"
+#include "../includes/my_cat.hpp"
 
 Test (check_nb_params, result_with_null_param, .init=redirect_all_stdout)
 {
