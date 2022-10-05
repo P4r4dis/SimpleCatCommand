@@ -81,23 +81,45 @@ Test(error_handle, result_error_handle_without_file, .init=redirect_all_stdout)
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// void rot13_io(void)
-// {
-//     std::string s;
+Test(open_files, result_file_not_open, .init = cr_redirect_stdout) {
 
-//     std::getline(std::cin, s);
-//     for (size_t i = 0; i < s.length(); ++i)
-//         s[i] = rot13_char(s[i]);
-//     std::cout << s << std::flush;
-// }
+	std::fstream fs;
 
-// Test(redirect, rot13, .init = cr_redirect_stdout) {
-//     auto &f_cin = criterion::get_redirected_cin();
+  	fs.open ("Makefiles", std::fstream::in);
+	cr_assert(fs.is_open() == false,
+			"FILE IS OPENED, The is %d, EXPECTED :\n0 or FALSE",
+			fs.is_open());
+  	fs.close();
+}
 
-//     f_cin << "the quick brown fox jumps over the lazy dog";
-//     f_cin.close();
+Test(open_files, result_file_open, .init = cr_redirect_stdout) {
 
-//     rot13_io();
+	std::fstream fs;
 
-//     cr_assert_stdout_eq_str("gur dhvpx oebja sbk whzcf bire gur ynml qbt");
-// }
+  	fs.open ("Makefile", std::fstream::in);
+	cr_assert(fs.is_open() == true,
+			"FILE NOT OPENED, The result is %d, EXPECTED :\n1 or true",
+			fs.is_open());
+  	fs.close();
+}
+
+Test(open_files, result_files_open, .init = cr_redirect_stdout) {
+
+	char const			*str[2] = {"Makefile","t.cpp"}; 
+	std::fstream 		fs;
+	unsigned int		size = sizeof(str) / sizeof(str[0]);
+	unsigned int		i = 0;
+
+	while (i < size)
+	{
+		fs.open (str[i], std::fstream::in);
+		cr_assert(fs.is_open() == true,
+			"FILES NOT OPENED, The result is %d, EXPECTED :\n1 or true\n File : %s",
+			fs.is_open(),
+			str[i]);
+		i++;
+	}
+	fs.close();
+
+  	
+}
