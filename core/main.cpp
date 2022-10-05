@@ -2,8 +2,9 @@
 
 int main(int ac, char **av)
 {
-    check_nb_params(ac);
+    if (check_nb_params(ac) == EXIT_FAILURE)
+        return EXIT_FAILURE;
     if(av)
-        return 0;
+        error_handle(av[1]);
     return 0;
 }

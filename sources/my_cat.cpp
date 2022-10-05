@@ -9,3 +9,14 @@ unsigned int		check_nb_params(unsigned int ac)
 	}
 	return EXIT_SUCCESS;
 }
+
+unsigned int    error_handle(char *str)
+{
+	if (!str)
+		return EXIT_FAILURE;
+	else
+	{
+		std::cerr << "my_cat : " << str << " : No such file or directory" << std::endl;
+        return EXIT_SUCCESS;
+	}
+}
