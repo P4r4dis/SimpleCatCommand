@@ -82,44 +82,44 @@ Test(error_handle, result_error_handle_without_file, .init=redirect_all_stdout)
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Test(open_files, result_file_not_open, .init = cr_redirect_stdout) {
+	std::string 	file = "Makefiles";
+	bool			result = is_open_files(open_files(file.data()));
 
-	std::fstream fs;
 
-  	fs.open ("Makefiles", std::fstream::in);
-	cr_assert(fs.is_open() == false,
-			"FILE IS OPENED, The is %d, EXPECTED :\n0 or FALSE",
-			fs.is_open());
-  	fs.close();
+	cr_assert(result == false,
+			"FILE %s IS OPENED, The is result :\n%d or TRUE\n"
+			"EXPECTED :\n0 or FALSE",
+			file.data(),
+			result);
 }
 
-Test(open_files, result_file_open, .init = cr_redirect_stdout) {
+Test(open_files, result_file_open, .init = cr_redirect_stdout)
+{
+	std::string 	file = "Makefile";
+	bool			result = is_open_files(open_files(file.data()));
 
-	std::fstream fs;
-
-  	fs.open ("Makefile", std::fstream::in);
-	cr_assert(fs.is_open() == true,
-			"FILE NOT OPENED, The result is %d, EXPECTED :\n1 or true",
-			fs.is_open());
-  	fs.close();
+	cr_assert(result == true,
+			"FILE %s NOT OPENED, The result is :\n%d or FALSE\n"
+			"EXPECTED :\n1 or TRUE",
+			file.data(),
+			result);
 }
 
-Test(open_files, result_files_open, .init = cr_redirect_stdout) {
+Test(open_files, result_files_open, .init = cr_redirect_stdout)
+{
+	std::vector<std::string>	files = {"Makefile","tests/t.cpp"}; 
+	bool						result;
+	long unsigned int			i = 0;
 
-	char const			*str[2] = {"Makefile","t.cpp"}; 
-	std::fstream 		fs;
-	unsigned int		size = sizeof(str) / sizeof(str[0]);
-	unsigned int		i = 0;
-
-	while (i < size)
+	while (i < files.size())
 	{
-		fs.open (str[i], std::fstream::in);
-		cr_assert(fs.is_open() == true,
-			"FILES NOT OPENED, The result is %d, EXPECTED :\n1 or true\n File : %s",
-			fs.is_open(),
-			str[i]);
+		result = is_open_files(open_files(files[i].data()));
+		cr_assert(result == true,
+		"FILE %s NOT OPENED, The result is :\n%d or FALSE\n"
+		"EXPECTED :\n1 or TRUE",
+		files[i].data(),
+		result);
 		i++;
-	}
-	fs.close();
-
-  	
+	} 	
 }
+////////////////////////////////////////////////////////////////////////////
