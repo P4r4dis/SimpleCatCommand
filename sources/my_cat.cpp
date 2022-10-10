@@ -22,16 +22,11 @@ unsigned int    error_handle(char *str)
 	}
 }
 
-std::fstream	open_files(char *file)
+bool	open_files(std::string &file)
 {
 	std::fstream	fs_file;
 	
-	fs_file.open(file, std::fstream::in);
-	return fs_file;
-}
-
-bool	is_open_files(std::fstream fs_file)
-{
+	fs_file.open(file.data(), std::fstream::in);
 	if (fs_file.is_open())
 	{
 		std::cout << std::boolalpha << "DEBUG : " << fs_file.is_open() << std::endl;
@@ -43,3 +38,19 @@ bool	is_open_files(std::fstream fs_file)
 		return fs_file.is_open();
 	}
 }
+
+// bool	open_files2(std::fstream &fs_file, std::string &file)
+// {
+// 	fs_file.open(file.data(), std::fstream::in);
+// 	std::cout << file << std::endl;
+// 	if (fs_file.is_open())
+// 	{
+// 		std::cout << std::boolalpha << "DEBUG : " << fs_file.is_open() << std::endl;
+// 		return fs_file.is_open();
+
+// 	} else
+// 	{
+// 		std::cout << std::boolalpha << "DEBUG : " << fs_file.is_open() << std::endl;
+// 		return fs_file.is_open();
+// 	}
+// }

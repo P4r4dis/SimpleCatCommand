@@ -82,10 +82,10 @@ Test(error_handle, result_error_handle_without_file, .init=redirect_all_stdout)
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Test(open_files, result_file_not_open, .init = cr_redirect_stdout) {
-	std::string 	file = "Makefiles";
-	bool			result = is_open_files(open_files(file.data()));
+	std::string 	file = "Makefiless";
+	bool			result;
 
-
+	result = open_files(file);
 	cr_assert(result == false,
 			"FILE %s IS OPENED, The is result :\n%d or TRUE\n"
 			"EXPECTED :\n0 or FALSE",
@@ -96,8 +96,9 @@ Test(open_files, result_file_not_open, .init = cr_redirect_stdout) {
 Test(open_files, result_file_open, .init = cr_redirect_stdout)
 {
 	std::string 	file = "Makefile";
-	bool			result = is_open_files(open_files(file.data()));
+	bool			result;
 
+	result = open_files(file);
 	cr_assert(result == true,
 			"FILE %s NOT OPENED, The result is :\n%d or FALSE\n"
 			"EXPECTED :\n1 or TRUE",
@@ -113,7 +114,7 @@ Test(open_files, result_files_open, .init = cr_redirect_stdout)
 
 	while (i < files.size())
 	{
-		result = is_open_files(open_files(files[i].data()));
+	result = open_files(files[i]);
 		cr_assert(result == true,
 		"FILE %s NOT OPENED, The result is :\n%d or FALSE\n"
 		"EXPECTED :\n1 or TRUE",
@@ -123,3 +124,22 @@ Test(open_files, result_files_open, .init = cr_redirect_stdout)
 	} 	
 }
 ////////////////////////////////////////////////////////////////////////////
+// Test(command_cat, result_files_not_read, .init = cr_redirect_stdout)
+// {
+// 	std::string 	file = "file1.txt";
+// 	bool			result = is_open_files(open_files(file.data()));
+// 	std::string		buffer;
+// 	// std::ifstream	file2(str);
+
+// 	cr_assert(result == true,
+// 			"FILE %s NOT OPENED, The result is :\n%d or FALSE\n"
+// 			"EXPECTED :\n1 or TRUE",
+// 			file.data(),
+// 			result);
+
+// 	while (getline(open_files(file.data()), buffer, '\0'))
+// 			std::cout << buffer;
+// 	cr_assert_stdout_eq_str("test",
+// 	"STDOUT don't matches. EXPECTED : test");
+// 	open_files(file.data()).close();
+// }

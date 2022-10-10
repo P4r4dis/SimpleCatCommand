@@ -9,10 +9,10 @@ NAME		=	my_cat
 TEST_NAME 	= 	test_$(NAME)
 
 
-INCFLAGS	+=	-I./includes/#$(INCS_PATH)
+INCFLAGS	+=	-I ./includes/#$(INCS_PATH)
 #LIBFLAG 	+=	-L
 
-CPPFLAGS	+=	-Wall -Wextra -Werror $(INCFLAGS)#-W -std=c++1z
+CPPFLAGS	+= -Wall -Wextra -Werror $(INCFLAGS)#-W -std=c++1z
 
 
 SRCS		=	$(SRCS_PATH)/my_cat.cpp \
