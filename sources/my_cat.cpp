@@ -1,6 +1,5 @@
 #include "../includes/my_cat.hpp"
 
-
 unsigned int		check_nb_params(unsigned int ac)
 {
 	if (ac < 2)
@@ -11,7 +10,7 @@ unsigned int		check_nb_params(unsigned int ac)
 	return EXIT_SUCCESS;
 }
 
-unsigned int    error_handle(char *str)
+unsigned int    	error_handle(char *str)
 {
 	if (!str)
 		return EXIT_FAILURE;
@@ -22,35 +21,21 @@ unsigned int    error_handle(char *str)
 	}
 }
 
-bool	open_files(std::string &file)
-{
-	std::fstream	fs_file;
-	
+bool				open_files(std::fstream &fs_file, std::string file)
+{	
 	fs_file.open(file.data(), std::fstream::in);
-	if (fs_file.is_open())
-	{
-		std::cout << std::boolalpha << "DEBUG : " << fs_file.is_open() << std::endl;
-		return fs_file.is_open();
-
-	} else
-	{
-		std::cout << std::boolalpha << "DEBUG : " << fs_file.is_open() << std::endl;
-		return fs_file.is_open();
-	}
+	return fs_file.is_open();
 }
 
-// bool	open_files2(std::fstream &fs_file, std::string &file)
-// {
-// 	fs_file.open(file.data(), std::fstream::in);
-// 	std::cout << file << std::endl;
-// 	if (fs_file.is_open())
-// 	{
-// 		std::cout << std::boolalpha << "DEBUG : " << fs_file.is_open() << std::endl;
-// 		return fs_file.is_open();
+void				command_cat(std::fstream &f_stream)
+{
+	std::string		buffer;
+	char			delimiter;
 
-// 	} else
-// 	{
-// 		std::cout << std::boolalpha << "DEBUG : " << fs_file.is_open() << std::endl;
-// 		return fs_file.is_open();
-// 	}
-// }
+	delimiter = '\0';	
+	while (std::getline(f_stream, buffer, delimiter))
+	{
+		std::cout << buffer << std::endl << std::flush;
+		f_stream.close();
+	}
+}
