@@ -19,7 +19,7 @@ int main(int ac, char **av)
 			command_cat(f_stream);
         else
             error_handle(av[i]);
-        close_files(f_stream);
+        close_file(f_stream);
         i++;
     }
     return EXIT_SUCCESS;

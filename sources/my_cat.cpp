@@ -37,7 +37,7 @@ void				command_cat(std::fstream &f_stream)
 		std::cout << buffer << std::endl << std::flush;
 }
 
-bool				close_files(std::fstream &fs_file)
+bool				close_file(std::fstream &fs_file)
 {	
 	fs_file.close();
 	return fs_file.is_open();
