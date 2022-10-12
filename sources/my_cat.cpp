@@ -36,6 +36,6 @@ void				command_cat(std::fstream &f_stream)
 	while (std::getline(f_stream, buffer, delimiter))
 	{
 		std::cout << buffer << std::endl << std::flush;
-		f_stream.close();
+		// f_stream.close();
 	}
 }

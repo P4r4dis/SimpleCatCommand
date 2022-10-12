@@ -136,32 +136,8 @@ Test(open_files, result_files_open, .init=redirect_all_stdout)
 		i++;
 	} 	
 }
-////////////////////////////////////////////////////////////////////////////
-// Test(command_cat, result_files_not_read, .init=redirect_all_stdout)
-// {
-// 	std::string 	file = "file1.txtt";
-// 	std::fstream	f_stream;
-// 	bool			result = open_files(f_stream, file);
-// 	std::string		buffer;
 
-// 	cr_assert(result == false,
-// 		"FILE %s IS OPENED, The result is :\n%d or TRUE\n"
-// 		"EXPECTED :\n0 or FALSE",
-// 		file.data(),
-// 		result);
-// 	if (!f_stream.is_open())
-// 	{
-// 		while (std::getline(f_stream, buffer, '\0')){
-// 			std::cout << buffer << std::flush;
-// 		cr_assert_stdout_eq_str("",
-// 		"STDOUT don't matches. EXPECTED : <nothing>");
-// 		}
-// 	}
-// 	error_handle(file.data());
-// 	cr_assert_stderr_eq_str("my_cat : file1.txtt : No such file or directory\n",
-// 	"STDERR don't matches, EXPECTED :\nmy_cat : %s : No such file or directory\n",
-// 	file.data());
-// }
+////////////////////////////////////////////////////////////////////////////
 
 Test(command_cat, result_files_not_read, .init=redirect_all_stdout)
 {
@@ -187,29 +163,6 @@ Test(command_cat, result_files_not_read, .init=redirect_all_stdout)
 	file.data());
 }
 
-// Test(command_cat, result_file_readed, .init=redirect_all_stdout)
-// {
-// 	std::string 	file = "file1.txt";
-// 	std::string		buffer;
-// 	std::fstream	f_stream;
-// 	bool			result = open_files(f_stream, file);
-
-// 	cr_assert(result == true,
-// 	 		"FILE %s IS NOT OPENED, The result is :\n%d or FALSE\n"
-// 	 		"EXPECTED :\n1 or TRUE",
-// 	 		file.data(),
-// 	 		result);
-// 	if (f_stream.is_open())
-// 	{	
-// 		while (std::getline(f_stream, buffer, '\0')){
-// 			std::cout << buffer << std::flush;
-// 			cr_assert_stdout_eq_str("test",
-// 			"STDOUT don't matches. EXPECTED : <file content>");
-// 		}
-// 	}
-// }
-
-
 Test(command_cat, result_file_readed, .init=redirect_all_stdout)
 {
 	std::string 	file = "file1.txt";
@@ -230,45 +183,6 @@ Test(command_cat, result_file_readed, .init=redirect_all_stdout)
 		
 	}
 }
-
-
-
-
-
-
-
-
-
-// Test(command_cat, result_files_readed, .init=redirect_all_stdout)
-// {
-// 	std::vector<std::string>	files = {"file1.txt", "file1.txt"}; 
-// 	std::string					buffer;
-// 	bool						result;
-// 	unsigned int				i;
-	
-// 	i = 0;
-// 	while (i < files.size())
-// 	{
-// 		std::fstream			f_stream;
-
-// 		result = open_files(f_stream, files[i]);
-// 		cr_assert(result == true,
-// 		"FILE %s NOT OPENED, The result is :\n%d or FALSE\n"
-// 		"EXPECTED :\n1 or TRUE",
-// 		files[i].data(),
-// 		result);
-// 		if (f_stream.is_open())
-// 		{	
-// 			while (std::getline(f_stream, buffer, '\0')){
-// 				std::cout << buffer << std::flush;
-// 			}
-// 		}
-// 		i++;
-// 		f_stream.close();
-// 	}
-// 	cr_assert_stdout_eq_str("testtest",
-// 	"STDOUT don't matches. EXPECTED : <files content>");
-// }
 
 Test(command_cat, result_files_readed, .init=redirect_all_stdout)
 {
@@ -333,4 +247,77 @@ Test(command_cat, result_files_readed_with_error, .init=redirect_all_stdout)
 	"STDERR don't matches, EXPECTED :\nmy_cat : %s : No such file or directory\n",
 	files[2].data());
 }
+
 ///////////////////////////////////////////////////////////////////////////////
+
+Test(close_file, result_file_not_close, .init=redirect_all_stdout)
+{
+	std::string		file = "file1.txt"; 
+	bool			result;
+	std::fstream	f_stream;
+
+	f_stream.open(file.data(), std::fstream::in);
+	result = f_stream.is_open();
+	cr_assert(result == true,
+		"FILE %s IS CLOSED, The result is :\n%d or FALSE\n"
+		"EXPECTED :\n1 or TRUE",
+		file.data(),
+		result);
+}
+
+Test(close_file, result_file_closed, .init=redirect_all_stdout)
+{
+	std::string		files = "file1.txt"; 
+	bool			result;
+	std::fstream	f_stream;
+
+	result = open_files(f_stream, files);
+	cr_assert(result == true,
+	"FILE %s NOT OPENED, The result is :\n%d or FALSE\n"
+	"EXPECTED :\n1 or TRUE",
+	files.data(),
+	result);
+	if (result)
+	{	
+		command_cat(f_stream);
+		f_stream.close();
+		result = f_stream.is_open();
+		cr_assert(result == false,
+		"FILE %s IS STILL OPEN, The result is :\n%d or TRUE\n"
+		"EXPECTED :\n0 or FALSE",
+		files.data(),
+		result);
+	}
+	else
+		error_handle(files.data());
+}
+
+Test(close_file, result_files_closed, .init=redirect_all_stdout)
+{
+	std::vector<std::string>		files = {"file1.txt", "file1.txt"}; 
+	bool							result;
+	std::fstream					f_stream;
+	long unsigned int				i = 0;
+
+	while (i < files.size())
+	{
+		result = open_files(f_stream, files[i]);
+		cr_assert(result == true,
+		"FILE %s NOT OPENED, The result is :\n%d or FALSE\n"
+		"EXPECTED :\n1 or TRUE",
+		files.data(),
+		result);
+		if (result)
+		{	
+			command_cat(f_stream);
+			f_stream.close();
+			result = f_stream.is_open();
+			cr_assert(result == false,
+			"FILE %s IS STILL OPEN, The result is :\n%d or TRUE\n"
+			"EXPECTED :\n0 or FALSE",
+			files.data(),
+			result);
+		}
+		i++;
+	}
+}
