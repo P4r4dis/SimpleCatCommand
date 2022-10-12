@@ -119,7 +119,7 @@ Test(open_files, result_file_open, .init=redirect_all_stdout)
 
 Test(open_files, result_files_open, .init=redirect_all_stdout)
 {
-	std::vector<std::string>	files = {"Makefile","tests/t.cpp"}; 
+	std::vector<std::string>	files = {"Makefile","tests/test_my_cat.cpp"}; 
 	bool						result;
 	long unsigned int			i = 0;
 
@@ -280,8 +280,9 @@ Test(close_file, result_file_closed, .init=redirect_all_stdout)
 	if (result)
 	{	
 		command_cat(f_stream);
-		f_stream.close();
-		result = f_stream.is_open();
+		// f_stream.close();
+		// result = f_stream.is_open();
+		result = close_file(f_stream);
 		cr_assert(result == false,
 		"FILE %s IS STILL OPEN, The result is :\n%d or TRUE\n"
 		"EXPECTED :\n0 or FALSE",
@@ -310,8 +311,9 @@ Test(close_file, result_files_closed, .init=redirect_all_stdout)
 		if (result)
 		{	
 			command_cat(f_stream);
-			f_stream.close();
-			result = f_stream.is_open();
+			// f_stream.close();
+			// result = f_stream.is_open();
+			result = close_file(f_stream);
 			cr_assert(result == false,
 			"FILE %s IS STILL OPEN, The result is :\n%d or TRUE\n"
 			"EXPECTED :\n0 or FALSE",
