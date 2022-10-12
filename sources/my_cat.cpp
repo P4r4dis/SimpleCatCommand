@@ -34,8 +34,11 @@ void				command_cat(std::fstream &f_stream)
 
 	delimiter = '\0';	
 	while (std::getline(f_stream, buffer, delimiter))
-	{
 		std::cout << buffer << std::endl << std::flush;
-		// f_stream.close();
-	}
+}
+
+bool				close_files(std::fstream &fs_file)
+{	
+	fs_file.close();
+	return fs_file.is_open();
 }

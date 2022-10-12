@@ -19,8 +19,8 @@ int main(int ac, char **av)
 			command_cat(f_stream);
         else
             error_handle(av[i]);
-		i++;
-		f_stream.close();    
+        close_files(f_stream);
+        i++;
     }
     return EXIT_SUCCESS;
 }
