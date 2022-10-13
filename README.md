@@ -171,4 +171,3 @@ $ make tests_run
 $ ./my_cat file1 [...]
 
 ```
->>>>>>> develop
